@@ -20,12 +20,32 @@ let products = [
 
 let selectedProducts = [];
 
-function addProduct(event, p_name) {
+function selectProducts(event, p_name) {
   console.log(event.target, p_name);
   if(!selectedProducts.includes(p_name)){
     selectedProducts.push(p_name);
   }
   renderApp()
+}   
+
+function saveProduct(event) {
+  event.preventDefault();
+
+  // console.log(event.target.elements.p_name.value);
+  // console.log(event.target.elements.p_price.value);
+
+  let p_name = event.target.elements.p_name.value
+  let p_price = event.target.elements.p_price.value
+  let product = {
+    name: p_name,
+    price: p_price
+  }
+  products.push(product)
+  event.target.elements.p_name.value = ""
+  event.target.elements.p_price.value = ""
+
+  renderApp()   
+ 
 }
 
 function renderApp(){
@@ -34,12 +54,18 @@ function renderApp(){
       <h1 id="header">Lista Proizvoda</h1>
       <h3>Izabrani proizvodi: {selectedProducts.length} </h3>
   
+          <form onSubmit={saveProduct}>
+            <input type="text" name="p_name" id="p_name" />
+            <input type="text" name="p_price" id="p_price" />
+            <button type="submit"> Dodaj Proizvod</button>
+          </form>
+
       {
         products.map((product,index) => (
           <div id="product-details" key={index}>
           { <h2> {product.name} </h2>}
           { product.price }
-          <button type="button" id={index} onClick={(event)=> addProduct(event,product.name)}> ADD  </button>
+          <button type="button" id={index} onClick={(event)=> selectProducts(event,product.name)}> ADD  </button>
           
        
         </div>
