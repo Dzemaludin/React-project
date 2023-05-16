@@ -72,7 +72,7 @@
     "babel": "npx babel src/app.js --out-file=public/js/app.js --watch"
   },
   "keywords": [],
-  "author": "", 
+  "author": "",
   "license": "ISC",
   "description": ""
 }
