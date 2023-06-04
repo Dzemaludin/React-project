@@ -4,22 +4,25 @@ var root = ReactDOM.createRoot(document.getElementById("root"));
 
 let products = [
   {
-    name: "Ipone 15",
+    name: "Nesto 15",
     price: 4000,
   },
   {
-    name: "Ipone 16",
+    name: "Nesto 16",
     price: 6000,
   },
   {
-    name: "Ipone 17",
+    name: "Nesto 17",
     price: 7000,
   },
   {
-    name: "Ipone 18",
+    name: "Nesto 18",
     price: 9000,
   },
 ];
+
+// react cdn => projekat koji postoji => (webpack + live-server)
+// create-react-app
 
 let selectedProducts = [];
 
@@ -51,7 +54,7 @@ function saveProduct(event) {
   
 
   renderApp();
-}
+} 
 
 class Header extends React.Component{
   render(){
@@ -80,7 +83,7 @@ class ProductList extends React.Component{
   render(){
     return(
        this.props.products.map((product, index) => (
-        <Product product={product} key={index}/>
+        <Product product={product} key={index} />
       ))
     )
   }
